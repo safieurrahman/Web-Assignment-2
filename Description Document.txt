@@ -1,0 +1,11 @@
+Name: Safie Ur Rehman - 4745
+Class: BESE 4A
+
+Assignment 2:
+The Assignment comprises of a dashboard containing 3 widgets;
+
+1. Digital and Analog clock.
+2. Full calendar spanning almost a century but displying the current month.
+3. Weather of current day.
+
+HTML5, CSS3, JavaScript and JQuery were used for the sake of assignment.

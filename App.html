@@ -1,0 +1,366 @@
+<!-- Safie Ur Rehman - 4745 -->
+
+<!DOCTYPE html>
+    <head>
+        <title> Assignment </title>
+    </head>
+
+    <link rel="stylesheet" href="experiment.css" />
+    <link href='http://fonts.googleapis.com/css?family=Economica' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link href="responsive-calendar.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+
+    <style>
+            #Main {
+            width: 95%;
+            background-color: white;
+
+            position: relative;
+            top:10px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+                
+
+    margin: auto;
+}
+                     
+            
+            #Clock_Widget {
+                
+                
+            position: absolute;              
+            margin-left: 0%;
+            top: 100px;
+            left: 250px;            
+            background: red;
+            width: 200px;
+            height: 200px;
+            display: block;
+            padding: 12px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: inset 0 1px 1px 0 #c7c7c7;
+            -moz-box-shadow: inset 0 1px 1px 0 #c7c7c7;
+            box-shadow: inset 0 1px 1px 0 #c7c7c7;
+            font-family: 'Droid', serif;
+            font-size: 40px;
+            
+
+}
+            
+            #Calender_Widget {
+            
+            background: red;
+            width: 200px;
+            height: 200px;
+            display: block;
+            padding: 12px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: inset 0 1px 1px 0 #c7c7c7;
+            -moz-box-shadow: inset 0 1px 1px 0 #c7c7c7;
+            box-shadow: inset 0 1px 1px 0 #c7c7c7;
+                
+            position: absolute;
+                
+            top: 100px;    
+            left: 700px;
+                
+            font-family: 'Droid', serif;
+            font-size: 40px;
+                
+                
+}
+
+        
+        #Weather_Widget {
+            
+            background: red;
+            width: 200px;
+            height: 200px;
+            display: block;
+            padding: 12px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: inset 0 1px 1px 0 #c7c7c7;
+            -moz-box-shadow: inset 0 1px 1px 0 #c7c7c7;
+            box-shadow: inset 0 1px 1px 0 #c7c7c7;
+                
+            position: absolute;
+                
+            top: 100px;
+            left: 1100px;
+            
+            font-family: 'Droid', serif;
+            font-size: 40px;
+            
+                
+}
+        
+        
+        
+        
+        #Clock_Container
+        {
+            
+            position: relative;
+            visibility: hidden;
+                      
+            
+        }
+        
+        
+        #Calendar_Container
+        {
+            
+            position: relative;                
+            margin-top: -450px;
+            visibility: hidden;
+            
+        }
+        
+         #Weather_Container
+        {
+            
+            position: relative;                
+            margin-top: -550px;
+            visibility: hidden;
+            
+            text-align: center;
+            
+            font-family: 'Droid', serif;
+            font-size: 40px;
+            
+        }
+        
+        #Note
+        {
+            position:absolute;
+            bottom: 20px;
+        }
+        
+        
+        
+        
+        
+    </style>
+
+    <body class = "experiment" style="background-color: white" onload="startTime()">
+        <header>
+           <h1 style="font-family:Impact; text-align:center; font-size:40px; background-color:red; color:white;"> Widget Dashboard </h1>
+            <h2 style = "text-align:center" onclick = "ShowDashboard()"> <img src = "Back.png" width = 50px; height = 50px;> </h2>
+        </header>
+        
+        
+        
+        <div id= "Main">
+                
+            <div id = "Clock_Container">
+                <div class="wrapper">
+                    <div id="experiment">
+                        <p class="start"><a href="#clock" id="start"></a></p>
+                        <div id="clock">
+                            <div id="hour"><img src="images/hourHand.png"/></div>
+                            <div id="minute"><img src="images/minuteHand.png"/></div>
+                            <div id="second"><img src="images/secondHand.png"/></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            
+            <div id = "Calendar_Container">
+                <div class="container">
+                    <!-- Responsive calendar - START -->
+                    <div class="responsive-calendar">
+                    <div class="controls">
+                        <a class="pull-left" data-go="prev"><div class="btn btn-primary">Prev</div></a>
+                        <h4><span data-head-year></span> <span data-head-month></span></h4>
+                        <a class="pull-right" data-go="next"><div class="btn btn-primary">Next</div></a>
+                    </div><hr/>
+                    <div class="day-headers">
+                      <div class="day header">Mon</div>
+                      <div class="day header">Tue</div>
+                      <div class="day header">Wed</div>
+                      <div class="day header">Thu</div>
+                      <div class="day header">Fri</div>
+                      <div class="day header">Sat</div>
+                      <div class="day header">Sun</div>
+                    </div>
+                    <div class="days" data-group="days"></div>
+                  </div>
+                  <!-- Responsive calendar - END -->
+                </div>
+            </div>       
+        
+            <div id = "Weather_Container">
+                <div> Weather for Islamabad</div>
+                <div id = "detail">  </div> 
+            </div>
+            
+                <div id="Clock_Widget" onclick="ShowClock()">
+                    
+                </div>
+            
+                <div id="Calender_Widget" onclick="ShowCalender()">
+                
+                </div> 
+
+                <div id="Weather_Widget" onclick = "ShowWeather ()">
+                    <div id = "temp">  </div>                    
+                </div>
+        </div>
+    
+        <br>
+        <br>
+        <div id = "Note"> <strong> Note: </strong> Please refresh by pressing F5 as necessary if weather widget doesn't display a status, the link may be broken! </div>
+        
+        
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script src="experiment.js"></script>
+        <script src="jquery.js"></script>
+        <script src="responsive-calendar.js"></script>
+        <script type="text/javascript">
+            
+            $(document).ready(function () {
+                //document.getElementById('Weather_Widget').click();
+                var oReq = new XMLHttpRequest();
+                oReq.onload = getWeather;
+                oReq.open("get", "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(2211027)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=", true);
+       oReq.send();
+                function getWeather(){
+                    //alert ("In get weather");
+                    weatherData = JSON.parse(this.responseText).query;
+                    localStorage.setItem("weather", JSON.stringify(weatherData));
+                    var data=JSON.parse(localStorage.getItem("weather"));
+                    
+                    var weather_info = document.getElementById("temp");
+                    weather_info.innerHTML=data.results.channel.item.condition.temp + " `F" + "<br/>" + data.results.channel.item.condition.text;
+                    document.getElementById("detail").innerHTML="Current Temperature: "+data.results.channel.item.condition.temp + "`F  " + "<br/>" + "Condition: " + data.results.channel.item.condition.text + "<br/>" + "  High: "+data.results.channel.item.forecast[0].high+ "<br/>" + "  Low: "+data.results.channel.item.forecast[0].low;
+                }
+          
+            $(".responsive-calendar").responsiveCalendar({
+                time: '2015-11',
+          
+        });
+      });
+            
+            function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('Clock_Widget').innerHTML =
+            h + ":" + m + ":" + s;
+            var t = setTimeout(startTime, 500);
+                
+            var d = new Date();
+            var a = d.getDay()
+            var b = d.getDate()
+            var c = d.getFullYear();
+                
+            document.getElementById("Calender_Widget").innerHTML = b + '/' + a + '/' + c;    
+            
+                
+        }
+        function checkTime(i) {
+            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+        }
+            
+            function ShowClock(){
+                var save = document.getElementById("Clock_Container");
+                save.style.visibility = "visible";
+                RemoveDashboard();
+            }
+            
+            function Stamp() {
+            
+        }
+            
+            function ShowCalender(){
+                var save = document.getElementById("Calendar_Container");
+                save.style.visibility = "visible";
+                RemoveDashboard();
+            }
+            
+            function ShowWeather(){
+                var save = document.getElementById("Weather_Container");
+                save.style.visibility = "visible";
+                RemoveDashboard();
+            }
+            
+            function HideClock(){
+                var save = document.getElementById("Clock_Container");
+                save.style.visibility = "hidden";
+            }
+            
+            function HideCalender(){
+                var save = document.getElementById("Calendar_Container");
+                save.style.visibility = "hidden";
+            }
+            
+            function HideWeather (){
+                var save = document.getElementById("Weather_Container");
+                save.style.visibility = "hidden";
+            }
+            
+            
+            
+            function RemoveDashboard()
+            {
+                var save = document.getElementById("Clock_Widget");
+                save.style.visibility = "hidden";
+                
+                var save1 = document.getElementById("Calender_Widget");
+                save1.style.visibility = "hidden";
+                
+                var save2= document.getElementById("Weather_Widget");
+                save2.style.visibility = "hidden";
+                
+                var save3= document.getElementById("Note");
+                save3.style.visibility = "hidden";
+                 
+                
+            }
+            
+            function ShowDashboard()
+            {
+                
+                HideClock();
+                HideCalender();
+                HideWeather();
+                
+                var save = document.getElementById("Clock_Widget");
+                save.style.visibility = "visible";
+                
+                var save1 = document.getElementById("Calender_Widget");
+                save1.style.visibility = "visible";
+                
+                var save2= document.getElementById("Weather_Widget");
+                save2.style.visibility = "visible";
+                
+                var save3= document.getElementById("Note");
+                save3.style.visibility = "visible";
+                
+            }
+            
+
+
+            
+    </script>
+
+        
+    </body>
+
+</html>
